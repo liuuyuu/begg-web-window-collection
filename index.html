@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI 驯兽场 · AI Tamer Studio</title>
+<meta name="description" content="统管 12 个 AI 应用的生成进度，用手里的鞭子督促它们。抽打不会让 AI 变快，但它们会求饶、会哭、会崩溃、会复活。" />
+<style>
+  :root { --ink:#2c2c2a; --paper:#f7f4ee; --card:#fffdf9; --tone:#d85a30; --muted:#888780; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--paper); color:var(--ink); line-height:1.7; }
+  a { color:inherit; text-decoration:none; }
+  .bar { display:flex; align-items:center; gap:12px; padding:14px 28px; }
+  .bar b { font-size:15px; }
+  .bar .tag { font-size:12px; color:var(--muted); }
+  .bar .gh { margin-left:auto; font-size:13px; color:var(--tone); }
+  .hero { max-width:860px; margin:56px auto 0; padding:0 28px; text-align:center; }
+  .hero h1 { font-size:38px; line-height:1.35; letter-spacing:.01em; }
+  .hero h1 em { font-style:normal; color:var(--tone); }
+  .hero p.sub { margin:18px auto 0; max-width:620px; font-size:16px; color:var(--muted); }
+  .cta { margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn { display:inline-block; padding:12px 30px; border-radius:999px; font-size:15px; border:1px solid var(--tone); }
+  .btn.primary { background:var(--tone); color:#fff; }
+  .btn.ghost { color:var(--tone); }
+  .btn:hover { opacity:.9; }
+  .shot { display:block; max-width:980px; width:calc(100% - 56px); margin:44px auto 0; border-radius:14px; border:1px solid rgba(0,0,0,.08); }
+  .shot-cap { text-align:center; font-size:12px; color:var(--muted); margin-top:10px; }
+  .feats { max-width:980px; margin:64px auto 0; padding:0 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .feat { background:var(--card); border:1px solid rgba(0,0,0,.07); border-radius:16px; padding:22px 20px; }
+  .feat h3 { font-size:15px; margin-bottom:8px; }
+  .feat p { font-size:13px; color:var(--muted); }
+  .demo-note { max-width:860px; margin:56px auto 0; padding:20px 28px; text-align:center; font-size:13px; color:var(--muted); }
+  .demo-note b { color:var(--ink); }
+  footer { margin-top:64px; padding:26px 28px 40px; text-align:center; font-size:12px; color:var(--muted); border-top:1px solid rgba(0,0,0,.06); }
+  footer a { color:var(--tone); }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <b>🐾 AI 驯兽场</b>
+  <span class="tag">AI Tamer Studio</span>
+  <a class="gh" href="h5/index.html">直接进入演示版 →</a>
+</div>
+
+<section class="hero">
+  <h1>把你的 AI，都变成<br>会被抽打的<em>打工仔</em></h1>
+  <p class="sub">
+    在一个终端里统管 Claude、ChatGPT、Gemini、豆包、Kimi、Cursor 等 12 个 AI 应用的生成进度。
+    抽打不会让它们变快——但它们会求饶、会哭、会崩溃、会复活。纯纯的情绪价值。
+  </p>
+  <div class="cta">
+    <a class="btn primary" href="h5/index.html">▶ 在线试玩（免安装）</a>
+    <a class="btn ghost" href="#desktop">下载桌面完整版</a>
+  </div>
+</section>
+
+<img class="shot" src="docs/demo-screenshot.png" alt="AI 驯兽场演示版截图" />
+<div class="shot-cap">浏览器演示版实拍：Claude 在写文件、Kimi 的产物观察在推进度、ChatGPT 和豆包在待命</div>
+
+<section class="feats">
+  <div class="feat">
+    <h3>🐒 12 个软糖打工仔</h3>
+    <p>每个 AI 应用一只圆润软糖风角色，有血条、压力值、连击与脾气。干活会累，挨打会哭。</p>
+  </div>
+  <div class="feat">
+    <h3>🪢 武器化光标</h3>
+    <p>徒手 / 拖鞋 / 皮鞭 / 水枪 / BB 弹枪 / 加特林 / 雷罚 / 投喂咖啡，点谁抽谁，连击越高台词越卑微。</p>
+  </div>
+  <div class="feat">
+    <h3>💥 崩溃与复活</h3>
+    <p>血条抽空当场阵亡、进度回退甚至报废，9 秒后颤巍巍爬起来继续干活。</p>
+  </div>
+  <div class="feat">
+    <h3>👁 产物观察</h3>
+    <p>按文件改动推断 AI 干活的进度：改得越多涨得越快，静默时缓慢向收尾爬。桌面版可真实观察本地目录。</p>
+  </div>
+</section>
+
+<section class="demo-note" id="desktop">
+  <b>关于两个版本</b><br>
+  在线演示版运行的是真实引擎代码（不是录屏）：不安装、不写文件、不联网，数据只存在本页内存，
+  所有道具已解锁，关掉即清空。<br>
+  桌面完整版在此基础上增加：真实接管本机 AI 应用与网页版、终端会话流、产物观察、鼠标捕获与更多道具。
+  桌面版为闭源软件，见 Releases 与项目主页说明。
+</section>
+
+<footer>
+  演示版源码以 MIT 许可开源 · 桌面完整版 © 2026 AI驯兽场 · 保留所有权利<br>
+  本页不收集任何数据，也不与任何服务器通信。
+</footer>
+
+</body>
+</html>

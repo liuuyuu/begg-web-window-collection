@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI 驯兽场 · 在线试玩</title>
+  <link rel="stylesheet" href="../src/renderer/styles.css" />
+  <!-- 演示版从 h5/ 加载，而同一份 app.js 里的静态资源路径按渲染层目录写。
+       这里把基址指回 ../src/renderer/，否则道具图标与 logo 会 404。 -->
+  <script>window.__ASSET_BASE = '../src/renderer/';</script>
+  <style>
+    /* 演示版顶栏提示条：明确告诉用户这是浏览器版、不会碰电脑 */
+    .h5-bar {
+      display: flex; align-items: center; gap: 10px;
+      height: 30px; padding: 0 20px; flex-shrink: 0;
+      background: var(--ink); color: var(--paper);
+      font-size: 11px; letter-spacing: .01em;
+    }
+    .h5-bar b { font-weight: 600; }
+    .h5-bar .sep { width:1px; height:12px; background: currentColor; opacity:.3; }
+    .h5-bar .k { opacity: .6; }
+    #h5clock { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+
+  <!-- 演示版提示 -->
+  <div class="h5-bar">
+    <b>浏览器演示版</b>
+    <span class="sep"></span>
+    <span class="k">不安装 · 不写文件 · 不联网 · 数据只存在本页内存，关掉即清空</span>
+    <span class="sep"></span>
+    <span class="k">全部道具已解锁；真实接管本机 AI 应用是桌面版能力</span>
+    <span style="margin-left:auto" class="k" id="h5clock"></span>
+  </div>
+
+  <div id="app">
+    <!-- 顶栏：右侧贴右对齐放统计与操作 -->
+    <header class="topbar">
+      <!-- 全局进度条已移除 -->
+
+      <div class="tb-right">
+        <div class="hstats">
+          <div class="stat"><b id="s-running">0</b><span>进行中</span></div>
+          <div class="stat"><b id="s-done">0</b><span>已交付</span></div>
+          <div class="stat"><b id="s-hits">0</b><span>抽打数</span></div>
+          <div class="stat crash"><b id="s-crash">0</b><span>崩溃数</span></div>
+        </div>
+
+        <div class="tb-acts">
+          <button class="icon-btn" id="btn-new" title="新建任务（⌘N）">＋</button>
+          <button class="icon-btn" id="btn-setting" title="设置">⚙</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主区：左侧角色名册 + 16:9 预览墙（视图筛选已删除，整条左栏都给角色） -->
+    <div class="main">
+      <nav class="sidebar">
+        <div class="nav-title">角色名册</div>
+        <div id="miniList"></div>
+      </nav>
+
+      <!-- 16:9 预览墙 -->
+      <section class="wall-wrap">
+        <div class="wall-head">
+          <div>
+            <h2 id="wallTitle">AI 工作界面</h2>
+            <div class="sub" id="wallSub">每个 AI 的实时画面 · 点它可以抽打</div>
+          </div>
+          <div class="wall-size">
+            <label>预览尺寸</label>
+            <input type="range" id="sizeRange" min="180" max="720" step="20" value="360" />
+            <span class="size-num" id="sizeNum">360px</span>
+            <button class="mini-btn" id="btn-fit" title="按容器宽度等距等大排列">等距排列</button>
+            <button class="mini-btn" id="btn-fit-off" title="恢复默认尺寸">默认</button>
+          </div>
+        </div>
+        <div class="wall-scroll" id="wallScroll">
+          <div class="wall" id="wall"></div>
+        </div>
+      </section>
+
+      <!-- 右侧「项目控制台 / 任务 / 日志」整栏已删除 -->
+    </div>
+
+    <!-- 底部道具选择栏 -->
+    <div class="dock">
+      <div class="dock-inner">
+        <div class="dock-tools" id="toolbar"></div>
+        <div class="dock-hint">当前：<b id="curTool">皮鞭</b> · 点预览卡里的角色即可动手（快捷键 1-7）</div>
+      </div>
+    </div>
+
+    <!-- 状态栏 -->
+    <div class="ticker">
+      <div class="ticker-in" id="ticker"></div>
+    </div>
+  </div>
+
+  <canvas id="fx"></canvas>
+  <div id="bubbles"></div>
+  <div id="modalRoot"></div>
+
+  <script src="../src/shared/characters.js"></script>
+  <script src="../src/shared/registry.js"></script>
+  <script src="runtime.js"></script>
+  <script>
+    // 把 engine 需要的依赖预置给 __h5.require
+    (function () {
+      var h5 = window.__h5;
+      h5.define('../shared/characters', function () {
+        return window.AI_TAMER_CHARACTERS;
+      });
+      h5.define('../shared/registry', function () {
+        return window.AI_TAMER_REGISTRY;
+      });
+      // adapters 在 H5 里用不到真实执行，给个空实现即可
+      h5.define('./adapters', function () {
+        return { startRealJob: function () { return null; } };
+      });
+      // engine 用惰性取值：脚本加载顺序在下方，取的时候才是完整的
+      h5.define('main/engine.js', function () {
+        return window.EngineModule;
+      });
+    })();
+  </script>
+  <script src="../src/main/engine.js"></script>
+  <script src="../src/renderer/js/cursors.generated.js"></script>
+  <script src="../src/renderer/js/characters.js"></script>
+  <script src="../src/renderer/js/voices.js"></script>
+  <script src="../src/renderer/js/sfx.js"></script>
+  <script src="../src/renderer/js/effects.js"></script>
+  <script src="../src/renderer/js/app.js"></script>
+
+  <script>
+    // 右下角时钟，顺便证明页面是活的
+    setInterval(function () {
+      var d = new Date();
+      var p = function (n) { return (n < 10 ? '0' : '') + n; };
+      document.getElementById('h5clock').textContent =
+        p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+    }, 1000);
+  </script>
+</body>
+</html>
