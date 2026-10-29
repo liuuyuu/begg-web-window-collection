@@ -1,17 +1,17 @@
 
-# 🐾 AI 驯兽场 · AI Tamer Studio
+# 🐾 网页窗口合集 · Web Window Collection
 
 把 Claude / ChatGPT / Gemini / Midjourney / ComfyUI / Cursor / Kimi / 豆包 等 AI 应用，
 变成**圆润软糖风**的卡通打工仔。抽打**不会改变** AI 的真实产出速度，
 但被打的 AI 会求饶、会哭、会崩溃、会复活——纯纯的情绪价值。
 
-**English**: AI Tamer Studio turns your AI apps into jelly-like workers you can "whip" while they work. Whipping doesn't make them faster — but they will beg, cry, crash, and come back to life. This repo hosts the **open-source browser demo**; the desktop app is closed-source.
+**English**: Web Window Collection turns your AI apps into jelly-like workers you can "whip" while they work. Whipping doesn't make them faster — but they will beg, cry, crash, and come back to life. This repo hosts the **open-source browser demo**; the desktop app is closed-source.
 
 ## ▶ 在线试玩（免安装）
 
 仓库已启用 GitHub Pages，打开首页即可玩，**不联网、不写文件、数据只存本页内存**：
 
-> https://`<你的用户名>`.github.io/`<仓库名>`/
+> https://liuuyuu.github.io/web-window-collection/
 
 本地跑也一样（纯静态，无构建步骤）：
 

@@ -1,5 +1,5 @@
 /**
- * AI 驯兽场 · 渲染层主逻辑
+ * 网页窗口合集 · 渲染层主逻辑
  */
 (function () {
   'use strict';
@@ -2372,7 +2372,7 @@ function wallOrderRank(id) {
           permBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             window.api.openScreenRecordingSettings().then((r) => {
-              if (r && r.ok) toast('已打开系统设置，勾选「AI驯兽场」后需完全退出重开');
+              if (r && r.ok) toast('已打开系统设置，勾选「网页窗口合集」后需完全退出重开');
               else toast('打不开设置页，请手动到「系统设置 → 隐私与安全性 → 屏幕录制」');
             });
           });
@@ -2418,9 +2418,9 @@ function wallOrderRank(id) {
               return window.api.openAxSettings();
             }).then((r) => {
               if (r && r.ok) {
-                toast('已打开系统设置：把「AI驯兽场」打开，然后完全退出本程序再重开', 4200);
+                toast('已打开系统设置：把「网页窗口合集」打开，然后完全退出本程序再重开', 4200);
               } else {
-                toast('请手动到「系统设置 → 隐私与安全性 → 辅助功能」勾选「AI驯兽场」', 4200);
+                toast('请手动到「系统设置 → 隐私与安全性 → 辅助功能」勾选「网页窗口合集」', 4200);
               }
               /*
                * 清掉权限缓存，让下次状态同步时重新查。
@@ -2433,7 +2433,7 @@ function wallOrderRank(id) {
                */
               axGlobal = null;
             }).catch(() => {
-              toast('请手动到「系统设置 → 隐私与安全性 → 辅助功能」勾选「AI驯兽场」');
+              toast('请手动到「系统设置 → 隐私与安全性 → 辅助功能」勾选「网页窗口合集」');
               axGlobal = null;
             });
           });
@@ -4267,7 +4267,7 @@ function wallOrderRank(id) {
             ? window.api.openScreenRecordingSettings()
             : window.api.openAxSettings();
           p.then((r) => {
-            if (r && r.ok) toast('已打开系统设置，勾选「AI驯兽场」后请完全退出重开', 4200);
+            if (r && r.ok) toast('已打开系统设置，勾选「网页窗口合集」后请完全退出重开', 4200);
             else toast('打不开设置页，请手动到 系统设置 → 隐私与安全性', 4200);
           }).catch(() => toast('打不开设置页'));
         };
