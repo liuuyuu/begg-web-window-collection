@@ -1,11 +1,11 @@
 
-# 🐾 网页窗口合集 · Web Window Collection
+# 🐾 破蛋-网页窗口合集 · Begg - Web Window Collection
 
 把 Claude / ChatGPT / Gemini / Midjourney / ComfyUI / Cursor / Kimi / 豆包 等 AI 应用，
 变成**圆润软糖风**的卡通打工仔。抽打**不会改变** AI 的真实产出速度，
 但被打的 AI 会求饶、会哭、会崩溃、会复活——纯纯的情绪价值。
 
-**English**: Web Window Collection turns your AI apps into jelly-like workers you can "whip" while they work. Whipping doesn't make them faster — but they will beg, cry, crash, and come back to life. This repo hosts the **open-source browser demo**; the desktop app is closed-source.
+**English**: Begg - Web Window Collection turns your AI apps into jelly-like workers you can "whip" while they work. Whipping doesn't make them faster — but they will beg, cry, crash, and come back to life. This repo hosts the **open-source browser demo**; the desktop app is closed-source.
 
 ## ▶ 在线试玩（免安装）
 
