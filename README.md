@@ -64,7 +64,7 @@ python3 -m http.server 8765
 桌面版在开源演示版之上增加：真实接管本机 AI 应用与网页版、终端会话流、
 按产物推断的真实进度、鼠标捕获、更多道具与付费解锁。
 
-→ 前往 [Releases](../../releases) 下载安装包（macOS，Windows 版制作中）。
+→ **[点此到 123 网盘下载](https://1829523080.share.123pan.cn/123pan/bsncjv-r4r4?pwd=NKsN)**（macOS / Windows 双版本，提取码 `NKsN`）。
 
 ## 🧩 目录结构
 
