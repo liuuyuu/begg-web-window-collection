@@ -11,7 +11,7 @@
 
 仓库已启用 GitHub Pages，打开首页即可玩，**不联网、不写文件、数据只存本页内存**：
 
-> https://liuuyuu.github.io/web-window-collection/
+> https://liuuyuu.github.io/begg-web-window-collection/
 
 本地跑也一样（纯静态，无构建步骤）：
 
